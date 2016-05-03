@@ -1,0 +1,30 @@
+$mainColor: #ccc;
+$shadow: 0px 1px 2px #000;
+
+@mixin myMixin {
+	background: red;
+	color: red;
+	text-shadow: 1px 1px 2px #000;
+}
+
+@mixin size($point) {
+	@if $point == small {
+		@media screen and (max-width: 768px) {
+			@content;
+		}
+	}
+}
+
+body {
+	@include myMixin;
+}
+
+header {
+	h1 {
+		@include myMixin;
+		@include size(small) {
+			color: blue;
+		}
+	}
+}
+
